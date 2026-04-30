@@ -1,0 +1,947 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beale Construction & Joinery Limited</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D49A;
+    --dark: #0E0D0B;
+    --dark-2: #1A1915;
+    --dark-3: #252420;
+    --mid: #3A3830;
+    --text: #F5F2EC;
+    --text-muted: #A09D95;
+    --white: #FFFFFF;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    background: rgba(14,13,11,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--gold);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+  }
+
+  .nav-logo span {
+    display: block;
+    font-size: 0.65rem;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+
+  .nav-cta {
+    background: var(--gold);
+    color: var(--dark) !important;
+    padding: 0.55rem 1.4rem;
+    border-radius: 2px;
+    font-weight: 500 !important;
+    transition: background 0.2s, opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { background: var(--gold-light) !important; color: var(--dark) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+  }
+
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 7rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at 80% 30%, rgba(201,168,76,0.18), transparent 35%), linear-gradient(160deg, #1A1915 0%, #0E0D0B 60%);
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 8rem;
+    right: 4rem;
+    width: 420px;
+    height: 420px;
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 50%;
+    opacity: 0.8;
+  }
+
+  .hero::after {
+    content: 'Crafted with care. Finished with pride.';
+    position: absolute;
+    right: 2rem;
+    bottom: 11rem;
+    max-width: 260px;
+    color: rgba(245,242,236,0.12);
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    line-height: 0.95;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    color: var(--white);
+    max-width: 640px;
+    margin-bottom: 1.8rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero h1 em { font-style: italic; color: var(--gold); }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.75;
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--dark);
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+    padding: 0.9rem 0;
+  }
+
+  .btn-ghost:hover { color: var(--gold); }
+  .btn-ghost::after { content: '→'; transition: transform 0.2s; }
+  .btn-ghost:hover::after { transform: translateX(4px); }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 4rem;
+    right: 2rem;
+    display: flex;
+    gap: 2rem;
+    z-index: 2;
+  }
+
+  .stat { text-align: right; }
+  .stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .ticker {
+    background: var(--gold);
+    padding: 0.65rem 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 25s linear infinite;
+    gap: 3rem;
+  }
+  .ticker-inner span {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--dark);
+  }
+  .ticker-dot { color: rgba(14,13,11,0.4); }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .section, .conversion-section, .process-section {
+    padding: 6rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  .section-tag::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+  .section-title em { color: var(--gold); font-style: italic; }
+  .section-sub {
+    font-size: 1rem;
+    color: var(--text-muted);
+    max-width: 560px;
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 3.5rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1px;
+    background: var(--mid);
+    border: 1px solid var(--mid);
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  .service-card {
+    background: var(--dark-2);
+    padding: 2.5rem 2rem;
+    transition: background 0.25s;
+    cursor: default;
+  }
+  .service-card:hover { background: var(--dark-3); }
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .service-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke: var(--gold);
+    fill: none;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .service-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.75rem;
+  }
+  .service-card p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 300;
+  }
+
+  .split-section { background: var(--dark-2); padding: 6rem 2rem; }
+  .split-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .split-panel {
+    min-height: 420px;
+    border-radius: 4px;
+    background:
+      linear-gradient(135deg, rgba(201,168,76,0.18), transparent 40%),
+      linear-gradient(160deg, var(--dark-3), var(--dark));
+    border: 1px solid rgba(201,168,76,0.18);
+    position: relative;
+    overflow: hidden;
+    padding: 2rem;
+    display: flex;
+    align-items: flex-end;
+  }
+  .split-panel::before {
+    content: '';
+    position: absolute;
+    inset: 2rem;
+    border: 1px solid rgba(201,168,76,0.16);
+  }
+  .split-panel h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 0.95;
+    color: rgba(245,242,236,0.16);
+    position: relative;
+  }
+  .split-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: var(--gold);
+    color: var(--dark);
+    padding: 1.5rem;
+    text-align: center;
+    border-radius: 3px;
+    z-index: 2;
+  }
+  .split-badge .big {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+  }
+  .split-badge .small {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-top: 4px;
+    display: block;
+  }
+  .checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    line-height: 1.6;
+  }
+  .checklist li::before {
+    content: '✓';
+    flex-shrink: 0;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    color: var(--gold);
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .conversion-section { background: var(--dark); }
+  .conversion-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+  }
+  .conversion-card {
+    background: linear-gradient(180deg, var(--dark-2), var(--dark-3));
+    border: 1px solid rgba(201,168,76,0.16);
+    border-radius: 4px;
+    padding: 2.2rem;
+  }
+  .conversion-card strong {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(201,168,76,0.12);
+    color: var(--gold);
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 1.2rem;
+  }
+  .conversion-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--white);
+    font-size: 1.25rem;
+    margin-bottom: 0.8rem;
+  }
+  .conversion-card p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    font-weight: 300;
+    font-size: 0.92rem;
+  }
+  .quote-strip {
+    margin-top: 2rem;
+    padding: 2rem;
+    border: 1px solid rgba(201,168,76,0.18);
+    background: rgba(201,168,76,0.06);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .quote-strip p {
+    color: var(--text);
+    max-width: 640px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .testimonials-section { background: var(--dark-2); padding: 6rem 2rem; }
+  .testimonials-inner { max-width: 1200px; margin: 0 auto; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3.5rem;
+  }
+  .testimonial-card {
+    background: var(--dark-3);
+    border: 1px solid rgba(201,168,76,0.12);
+    border-radius: 4px;
+    padding: 2rem;
+  }
+  .stars { color: var(--gold); margin-bottom: 1.2rem; letter-spacing: 0.12em; }
+  .testimonial-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+  .testimonial-author { font-size: 0.85rem; font-weight: 500; color: var(--text); }
+  .testimonial-author span {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0;
+    margin-top: 3.5rem;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--mid), var(--mid), transparent);
+  }
+  .process-step { text-align: center; padding: 0 1.5rem; }
+  .step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--dark-2);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    position: relative;
+    z-index: 1;
+  }
+  .process-step h4 { font-weight: 500; font-size: 0.95rem; color: var(--white); margin-bottom: 0.6rem; }
+  .process-step p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+
+  .cta-section {
+    background: linear-gradient(135deg, var(--dark-3) 0%, var(--dark) 100%);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 5rem 2rem;
+    text-align: center;
+  }
+  .cta-inner { max-width: 640px; margin: 0 auto; }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+  }
+  .cta-section h2 em { color: var(--gold); font-style: italic; }
+  .cta-section p {
+    font-size: 1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  .cta-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; align-items: center; }
+  .btn-outline {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold);
+    text-decoration: none;
+    padding: 0.9rem 2rem;
+    font-weight: 400;
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    border-radius: 2px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+
+  .contact-section { padding: 6rem 2rem; background: var(--dark-2); }
+  .contact-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-detail { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 2rem; }
+  .contact-detail-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--gold);
+  }
+  .contact-detail-text strong {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 4px;
+  }
+  .contact-detail-text a, .contact-detail-text span {
+    font-size: 0.95rem;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 300;
+  }
+  .contact-detail-text a:hover { color: var(--gold); }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+  .form-group input, .form-group textarea, .form-group select {
+    width: 100%;
+    background: var(--dark);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 3px;
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    padding: 0.85rem 1rem;
+    outline: none;
+    appearance: none;
+  }
+  .form-group textarea { resize: vertical; min-height: 120px; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: rgba(201,168,76,0.5); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    border: none;
+    color: var(--dark);
+    padding: 1rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.06); padding: 3rem 2rem 2rem; }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--gold); }
+  .footer-brand span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 300;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { text-decoration: none; font-size: 0.82rem; color: var(--text-muted); transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+  .footer-copy { font-size: 0.78rem; color: var(--text-muted); font-weight: 300; }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .nav-links.open {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--dark-2);
+      padding: 2rem;
+      gap: 1.5rem;
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .nav-cta { display: none; }
+    .hamburger { display: flex; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    .hero-stats, .hero::after { display: none; }
+    .split-inner, .contact-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .conversion-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .process-steps::before { display: none; }
+    .process-steps { gap: 2rem; }
+    .footer-inner { flex-direction: column; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+    .section, .conversion-section, .process-section { padding: 4rem 1.5rem; }
+    .cta-section, .contact-section, .split-section, .testimonials-section { padding: 4rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-logo">
+    Beale Construction & Joinery
+    <span>Limited</span>
+  </div>
+  <ul class="nav-links" id="navlinks">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Why Choose Us</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="hero-eyebrow">Expert Craftsmen · Kingswood, Gloucestershire</p>
+  <h1>Built to<br><em>Last.</em><br>Finished to<br>Impress.</h1>
+  <p class="hero-desc">Trusted carpentry, joinery, and construction services for homeowners across Gloucestershire and the South West.</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn-primary">Get a Free Quote</a>
+    <a href="#work" class="btn-ghost">Why choose us</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-number">15+</div><div class="stat-label">Years experience</div></div>
+    <div class="stat"><div class="stat-number">500+</div><div class="stat-label">Projects completed</div></div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="ticker-inner">
+    <span>Kitchens</span><span class="ticker-dot">·</span><span>Fitted Wardrobes</span><span class="ticker-dot">·</span><span>Staircases</span><span class="ticker-dot">·</span><span>Extensions</span><span class="ticker-dot">·</span><span>Decking</span><span class="ticker-dot">·</span><span>Doors & Frames</span><span class="ticker-dot">·</span><span>Loft Conversions</span><span class="ticker-dot">·</span><span>Skirting & Architrave</span><span class="ticker-dot">·</span><span>Bespoke Joinery</span><span class="ticker-dot">·</span>
+    <span>Kitchens</span><span class="ticker-dot">·</span><span>Fitted Wardrobes</span><span class="ticker-dot">·</span><span>Staircases</span><span class="ticker-dot">·</span><span>Extensions</span><span class="ticker-dot">·</span><span>Decking</span><span class="ticker-dot">·</span><span>Doors & Frames</span><span class="ticker-dot">·</span><span>Loft Conversions</span><span class="ticker-dot">·</span><span>Skirting & Architrave</span><span class="ticker-dot">·</span><span>Bespoke Joinery</span><span class="ticker-dot">·</span>
+  </div>
+</div>
+
+<div id="services">
+  <div class="section">
+    <p class="section-tag">What We Do</p>
+    <h2 class="section-title">Craftsmanship across<br><em>every project</em></h2>
+    <p class="section-sub">From a single door fitting to a full house renovation, we bring the same level of care and skill to every job.</p>
+
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg></div><h3>Kitchens & Bathrooms</h3><p>Full installation of fitted kitchens, custom cabinetry, and bathroom furniture. Supply and fit or fit-only — your choice.</p></div>
+      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 21h18M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/></svg></div><h3>Extensions & Renovations</h3><p>Single and double storey extensions, loft conversions, and whole-home renovations handled with full project management.</p></div>
+      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M4 4v16M20 4v16M4 12h16M4 6h4M4 18h4M16 6h4M16 18h4"/></svg></div><h3>Fitted Wardrobes</h3><p>Bespoke floor-to-ceiling fitted wardrobes, alcove shelving, and built-in storage solutions tailored to your space.</p></div>
+      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg></div><h3>Staircases & Flooring</h3><p>Staircase installation and renovation, hardwood flooring, laminate, and LVT fitting to a flawless finish.</p></div>
+      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div><h3>Doors, Windows & Frames</h3><p>Supply and fitting of internal and external doors, frames, windows, skirting, and architrave throughout your property.</p></div>
+      <div class="service-card"><div class="service-icon"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg></div><h3>Decking & Outdoor</h3><p>Composite and hardwood decking, garden structures, fencing, and outdoor joinery built to withstand the British weather.</p></div>
+    </div>
+  </div>
+</div>
+
+<div id="about">
+  <div class="split-section">
+    <div class="split-inner">
+      <div class="split-panel">
+        <div class="split-badge"><span class="big">5★</span><span class="small">Rated locally</span></div>
+        <h3>Joinery.<br>Construction.<br>Quality.</h3>
+      </div>
+      <div class="split-content">
+        <p class="section-tag">About Us</p>
+        <h2 class="section-title">Local craftsmen.<br><em>Honest work.</em></h2>
+        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-top: 1rem;">Based in Kingswood, Gloucestershire, Beale Construction & Joinery Limited delivers high-quality carpentry and building work to homeowners across the region.</p>
+        <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-top: 1rem;">We believe in honest pricing, tidy workmanship, and making sure you love the result. No hidden costs, no corners cut.</p>
+        <ul class="checklist">
+          <li>Fully insured and qualified tradespeople</li>
+          <li>Free no-obligation quotes provided</li>
+          <li>Clean, respectful team on every job</li>
+          <li>All work completed with care and attention to detail</li>
+          <li>Local to Kingswood, Wotton-under-Edge and surrounding areas</li>
+        </ul>
+        <a href="tel:07527511649" class="btn-primary">Call 07527 511649</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="work" class="conversion-section">
+  <p class="section-tag">Why Choose Us</p>
+  <h2 class="section-title">Quality work that makes your home feel<br><em>finished properly</em></h2>
+  <p class="section-sub">No messy shortcuts, no unreliable tradesmen, and no confusing pricing. Just clear communication, tidy work, and a finish you can be proud of.</p>
+
+  <div class="conversion-grid">
+    <div class="conversion-card"><strong>01</strong><h3>Clear Quotes</h3><p>You know exactly what the job includes before work starts. No hidden costs, no pressure, and no surprise extras.</p></div>
+    <div class="conversion-card"><strong>02</strong><h3>Reliable From Start To Finish</h3><p>We turn up when agreed, keep you updated, and treat your home with care and respect throughout the job.</p></div>
+    <div class="conversion-card"><strong>03</strong><h3>Built To Last</h3><p>Every detail is fitted properly, finished cleanly, and made to stand the test of time.</p></div>
+  </div>
+
+  <div class="quote-strip">
+    <p><strong>Not sure where to start?</strong><br>Tell us what you need, even if it is only a rough idea. We can talk through the best options and give you a clear next step.</p>
+    <a href="#contact" class="btn-primary">Get a Free Quote</a>
+  </div>
+</div>
+
+<div class="process-section">
+  <p class="section-tag">How It Works</p>
+  <h2 class="section-title">From quote to<br><em>completion</em></h2>
+  <div class="process-steps">
+    <div class="process-step"><div class="step-number">1</div><h4>Get in touch</h4><p>Call or fill in the form. Tell us what you need and where you are.</p></div>
+    <div class="process-step"><div class="step-number">2</div><h4>Free site visit</h4><p>We visit, take measurements, and give you a clear written quote.</p></div>
+    <div class="process-step"><div class="step-number">3</div><h4>Work begins</h4><p>We agree a start date that suits you. Minimal disruption, tidy site.</p></div>
+    <div class="process-step"><div class="step-number">4</div><h4>Finished & signed off</h4><p>You inspect the job, we fix anything you're not happy with. Done.</p></div>
+  </div>
+</div>
+
+<div class="testimonials-section">
+  <div class="testimonials-inner">
+    <p class="section-tag">Reviews</p>
+    <h2 class="section-title">What our <em>clients say</em></h2>
+    <div class="testimonials-grid">
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"Absolutely brilliant job on our kitchen. Turned up on time every day, worked cleanly, and the finish is immaculate."</p><div class="testimonial-author">Sarah M. <span>Wotton-under-Edge</span></div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"Had fitted wardrobes and new doors throughout the house. Competitive price, great quality, and very tidy."</p><div class="testimonial-author">James T. <span>Kingswood</span></div></div>
+      <div class="testimonial-card"><div class="stars">★★★★★</div><p class="testimonial-text">"Stress-free from start to finish. Everything was explained clearly and the room looks incredible."</p><div class="testimonial-author">Rebecca H. <span>Chipping Sodbury</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2>Ready to start your<br><em>project?</em></h2>
+    <p>Whether it's a small repair or a full renovation, get in touch today for a free, no-obligation quote.</p>
+    <div class="cta-actions">
+      <a href="#contact" class="btn-primary">Request a Quote</a>
+      <a href="tel:07527511649" class="btn-outline">07527 511649</a>
+    </div>
+  </div>
+</div>
+
+<div id="contact">
+  <div class="contact-section">
+    <div class="contact-inner">
+      <div class="contact-info">
+        <p class="section-tag">Contact</p>
+        <h2 class="section-title" style="margin-bottom: 2rem;">Let's talk<br><em>about your project</em></h2>
+        <div class="contact-detail"><div class="contact-detail-icon">☎</div><div class="contact-detail-text"><strong>Phone</strong><a href="tel:07527511649">07527 511649</a></div></div>
+        <div class="contact-detail"><div class="contact-detail-icon">⌖</div><div class="contact-detail-text"><strong>Address</strong><span>11a High St, Kingswood<br>Wotton-under-Edge GL12 8RS</span></div></div>
+        <div class="contact-detail"><div class="contact-detail-icon">◷</div><div class="contact-detail-text"><strong>Hours</strong><span>Open 24 hours for enquiries</span></div></div>
+      </div>
+      <div class="contact-form">
+        <div class="form-row"><div class="form-group"><label>First name</label><input type="text" placeholder="John"></div><div class="form-group"><label>Last name</label><input type="text" placeholder="Smith"></div></div>
+        <div class="form-group"><label>Phone number</label><input type="tel" placeholder="07700 000000"></div>
+        <div class="form-group"><label>Email address</label><input type="email" placeholder="john@email.com"></div>
+        <div class="form-group"><label>Type of work</label><select><option value="" disabled selected>Select a service...</option><option>Kitchen installation</option><option>Fitted wardrobes</option><option>Extension / renovation</option><option>Staircase</option><option>Doors & windows</option><option>Decking / outdoor</option><option>Other</option></select></div>
+        <div class="form-group"><label>Tell us about your project</label><textarea placeholder="Briefly describe what you need..."></textarea></div>
+        <button class="form-submit" onclick="handleSubmit(event)">Send Enquiry →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Beale Construction & Joinery<span>Limited · Kingswood, Gloucestershire</span></div>
+    <ul class="footer-links"><li><a href="#services">Services</a></li><li><a href="#about">About</a></li><li><a href="#work">Why Choose Us</a></li><li><a href="#contact">Contact</a></li></ul>
+    <p class="footer-copy">© 2026 Beale Construction & Joinery Limited</p>
+  </div>
+</footer>
+
+<script>
+  function toggleNav() {
+    document.getElementById('navlinks').classList.toggle('open');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', () => {
+      document.getElementById('navlinks').classList.remove('open');
+    });
+  });
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = 'Enquiry received — please call 07527 511649';
+    btn.style.background = '#4a7c59';
+    btn.disabled = true;
+  }
+</script>
+</body>
+</html>
